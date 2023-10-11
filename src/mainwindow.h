@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "colorselector.h"
+#include "imageblock.h"
+#include "pixelblock.h"
+#include "canvas.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +19,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void makeDirs(const QString &s);
+
 private:
     Ui::MainWindow *ui;
+    QColor curColor;
 };
 #endif // MAINWINDOW_H
