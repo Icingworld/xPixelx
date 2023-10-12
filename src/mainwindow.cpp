@@ -17,18 +17,21 @@ MainWindow::MainWindow(QWidget *parent)
     ImageBlock * testImg = new ImageBlock("test/test.png");
     ui->testLayout->insertWidget(0, testImg);
 
-    // add test pixel block
-    PixelBlock * testPixel = new PixelBlock();
-    // qDebug() << qRed(testPixel->color()) << qGreen(testPixel->color()) << qBlue(testPixel->color());
-    ui->testLayout->insertWidget(0, testPixel);
-
     // add color selector
     ColorSelector * x_selector = new ColorSelector();
     ui->verticalLayout_5->addWidget(x_selector);
+    connect(x_selector, &ColorSelector::colorChanged, this, [this](QColor color){
+        curColor = color;
+    });
 
     // add canvas
-    Canvas * canvas = new Canvas(40, 30);
-    delete canvas;
+    canvas = new Canvas(30, 30, curColor);
+    ui->canvasLayout->addWidget(canvas);
+    // &Canvas::setSize(int) is a slot to resize all the pixel blocks
+    // connect(this, &MainWindow::sizeChanged, canvas, &Canvas::setSize);
+    // delete canvas;
+
+    // need a toolbar on the right
 }
 
 MainWindow::~MainWindow()

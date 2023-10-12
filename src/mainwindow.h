@@ -24,5 +24,16 @@ public:
 private:
     Ui::MainWindow *ui;
     QColor curColor;
+    Canvas * canvas;
+
+// protected:
+//     void resizeEvent(QResizeEvent* event) override {
+//         QMainWindow::resizeEvent(event);
+//         qDebug() << "send height: " << canvas->x_vector[0]->height();
+//         emit sizeChanged(canvas->x_vector[0]->height());
+//     }
+//
+// signals:
+//     void sizeChanged(int);
 };
 #endif // MAINWINDOW_H
