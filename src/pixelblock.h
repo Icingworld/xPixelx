@@ -8,20 +8,36 @@ class PixelBlock : public QLabel
     Q_OBJECT
 
 public:
-    PixelBlock(QColor & color, QWidget * parent = nullptr);
+    PixelBlock(QColor &, int &, int &, QWidget * parent = nullptr);
     virtual ~PixelBlock();
 
 private:
     QColor & curColor;
-    void setBackground() {
+    int & graphicsview_mode;
+    int & working_mode;
+    
+    void draw() {
         setFrameShape(QFrame::NoFrame);
         setStyleSheet(QString("background:rgb(%1,%2,%3);").arg(curColor.red()).arg(curColor.green()).arg(curColor.blue()));
+    }
+
+    void clear() {
+        setFrameShape(QFrame::Box);
+        setStyleSheet("background-color:rgb(209,209,209);border-width:1px;border-style:solid;border-color:rgb(255, 255, 255);");
     }
 
 protected:
     void mousePressEvent(QMouseEvent * event) override {
         if (event->button() == Qt::LeftButton) {
-            setBackground();
+            if (graphicsview_mode == QGraphicsView::NoDrag)
+            {
+                if (working_mode == Draw)
+                {
+                    draw();
+                } else if (working_mode == Clear) {
+                    clear();
+                }
+            }
         }
         QWidget::mousePressEvent(event);
     }
