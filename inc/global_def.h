@@ -18,6 +18,10 @@
 #include <QDebug>
 #include <QPainter>
 #include <QIntValidator>
+#include <QWheelEvent>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsWidget>
 
 /* custom directory */
 #define     OUT_DIR         "out"
@@ -30,16 +34,9 @@
 #define     IMG_HEIGHT  90
 
 /* custom struct */
-typedef struct
-{
-    int x;
-    int y;
-} Coord;
-
-typedef struct
-{
-    int width;
-    int height;
-} Size;
+enum _WorkingMode_ {
+    Draw,
+    Clear
+};
 
 #endif // GLOBAL_H
