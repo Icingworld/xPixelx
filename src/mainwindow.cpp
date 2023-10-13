@@ -4,6 +4,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , GraphicsViewMode(QGraphicsView::NoDrag)
+    , WorkingMode(Draw)
+
 {
     ui->setupUi(this);
 
@@ -24,14 +27,15 @@ MainWindow::MainWindow(QWidget *parent)
         curColor = color;
     });
 
-    // add canvas
-    canvas = new Canvas(30, 30, curColor);
-    ui->canvasLayout->addWidget(canvas);
-    // &Canvas::setSize(int) is a slot to resize all the pixel blocks
-    // connect(this, &MainWindow::sizeChanged, canvas, &Canvas::setSize);
-    // delete canvas;
-
-    // need a toolbar on the right
+    // add GraphicsView and 30 * 30 canvas
+    canvas = new Canvas(30, 30, curColor, GraphicsViewMode, WorkingMode);
+    scene = new QGraphicsScene(this);
+    graphicsView = new MyGraphicsView(scene, this);
+    scene->addWidget(canvas);
+    graphicsView->setRenderHint(QPainter::Antialiasing, true);
+    graphicsView->setRenderHint(QPainter::SmoothPixmapTransform, true);
+    ui->canvasLayout->addWidget(graphicsView);
+    canvas->setCursor(Qt::CrossCursor);
 }
 
 MainWindow::~MainWindow()
@@ -52,3 +56,41 @@ void MainWindow::makeDirs(const QString & dirPath)
         }
     }
 }
+
+void MainWindow::on_handtool_clicked()
+{
+    graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+    GraphicsViewMode = QGraphicsView::ScrollHandDrag;
+
+}
+
+void MainWindow::on_pointer_clicked()
+{
+    graphicsView->setDragMode(QGraphicsView::NoDrag);
+    GraphicsViewMode = QGraphicsView::NoDrag;
+    WorkingMode = Draw;
+    canvas->setCursor(Qt::CrossCursor);
+}
+
+void MainWindow::on_zoomin_clicked()
+{
+    graphicsView->scale(1.2, 1.2);
+}
+
+void MainWindow::on_zoomout_clicked()
+{
+    graphicsView->scale(0.8, 0.8);
+}
+
+
+void MainWindow::on_clear_clicked()
+{
+    canvas->setCursor(Qt::CrossCursor);
+    if (WorkingMode == Clear)
+    {
+        WorkingMode = Draw;
+    } else {
+        WorkingMode = Clear;
+    }
+}
+
