@@ -266,7 +266,7 @@ border:2px solid brown;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#pointer{
-background-image: url(:/assets/icon/assets/icon/Pointer_32x32.png);
+background-image: url(://assets/icon/Pointer_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -292,7 +292,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#handtool{
-background-image: url(:/assets/icon/assets/icon/HandTool_32x32.png);
+background-image: url(://assets/icon/HandTool_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -318,7 +318,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#clear{
-background-image: url(:/assets/icon/assets/icon/Clear_32x32.png);
+background-image: url(://assets/icon/Clear_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -344,7 +344,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#colormixer{
-background-image: url(:/assets/icon/assets/icon/ColorMixer_32x32.png);
+background-image: url(://assets/icon/ColorMixer_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -370,7 +370,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#zoomin{
-background-image: url(:/assets/icon/assets/icon/ZoomIn_32x32.png);
+background-image: url(://assets/icon/ZoomIn_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -396,7 +396,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#zoomout{
-background-image: url(:/assets/icon/assets/icon/ZoomOut_32x32.png);
+background-image: url(://assets/icon/ZoomOut_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -422,7 +422,7 @@ background-position: center;
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#save{
-background-image: url(:/assets/icon/assets/icon/Save_32x32.png);
+background-image: url(://assets/icon/Save_32x32.png);
 background-repeat: no-repeat;
 background-position: center;
 }</string>
@@ -460,7 +460,7 @@ background-position: center;
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
