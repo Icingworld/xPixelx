@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/icon/Clear_32x32.png</file>
+        <file>assets/icon/ColorMixer_32x32.png</file>
+        <file>assets/icon/First_32x32.png</file>
+        <file>assets/icon/HandTool_32x32.png</file>
+        <file>assets/icon/Info_32x32.png</file>
+        <file>assets/icon/Last_32x32.png</file>
+        <file>assets/icon/LineItem_32x32.png</file>
+        <file>assets/icon/Pause_32x32.png</file>
+        <file>assets/icon/Play_32x32.png</file>
+        <file>assets/icon/Pointer_32x32.png</file>
+        <file>assets/icon/Save_32x32.png</file>
+        <file>assets/icon/Stop_32x32.png</file>
+        <file>assets/icon/ZoomIn_32x32.png</file>
+        <file>assets/icon/ZoomOut_32x32.png</file>
+    </qresource>
+</RCC>
