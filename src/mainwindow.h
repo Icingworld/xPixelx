@@ -33,6 +33,8 @@ private slots:
 
     void on_clear_clicked();
 
+    void on_save_clicked();
+
 private:
     Ui::MainWindow *ui;
     QColor curColor;

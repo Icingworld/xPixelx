@@ -11,6 +11,9 @@ public:
     Canvas(int, int, QColor &, int &, int &, QWidget * parent = nullptr);
     virtual ~Canvas();
 
+    void saveImage(QString, double = 1.0);
+    void loadImage(QString);
+
 private:
     int x_width;
     int x_height;
@@ -21,7 +24,7 @@ private:
 public:
     QGridLayout * x_layout;
     QVector <PixelBlock *> x_vector;
-    
+
 };
 
 #endif // CANVAS_H

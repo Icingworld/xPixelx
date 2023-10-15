@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     // add GraphicsView and 30 * 30 canvas
-    canvas = new Canvas(30, 30, curColor, GraphicsViewMode, WorkingMode);
+    canvas = new Canvas(400, 300, curColor, GraphicsViewMode, WorkingMode);
     scene = new QGraphicsScene(this);
     graphicsView = new MyGraphicsView(scene, this);
     scene->addWidget(canvas);
@@ -36,6 +36,13 @@ MainWindow::MainWindow(QWidget *parent)
     graphicsView->setRenderHint(QPainter::SmoothPixmapTransform, true);
     ui->canvasLayout->addWidget(graphicsView);
     canvas->setCursor(Qt::CrossCursor);
+
+    // TODO
+    /*
+     * 1. Hue点击跳转事件
+     * 2. Canvas初始化自动缩放至合适大小
+     * 3.
+     */
 }
 
 MainWindow::~MainWindow()
@@ -92,5 +99,11 @@ void MainWindow::on_clear_clicked()
     } else {
         WorkingMode = Clear;
     }
+}
+
+
+void MainWindow::on_save_clicked()
+{
+    canvas->saveImage("test");
 }
 

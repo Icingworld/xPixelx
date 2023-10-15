@@ -20,7 +20,8 @@ ColorCanvas::~ColorCanvas()
 void ColorCanvas::setColor(int hue)
 {
     x_hue = hue;
-    QColor tempColor = QColor::fromHsv(x_hue, (int)(255.0 * (double)x_pos.x() / (double)width()), (int)(255.0 * (double)x_pos.y() / (double)height()));
+    int x_temp = x_pos.x() == -1 ? 0 : x_pos.x(), y_temp = x_pos.y() == -1 ? 0 : x_pos.y();
+    QColor tempColor = QColor::fromHsv(x_hue, (int)(255.0 * (double)x_temp / (double)width()), (int)(255.0 * (double)y_temp / (double)height()));
     emit sendColorChangedSignal(tempColor);
     update();
 }
@@ -127,19 +128,18 @@ ColorHex::ColorHex(QWidget * parent)
       lock(false)
 {
     x_text_hex = new QLabel("Color:#");
-    x_hex = new MyLineEdit(this);
-    x_hex->setText("ffffff");
+    x_hex = new MyLineEdit("000000");
 
     x_validator = new QIntValidator(0, 255, this);
 
     x_text_r = new QLabel("Red:");
-    x_red = new QLineEdit("255");
+    x_red = new MyLineEdit("0");
     x_red->setValidator(x_validator);
     x_text_g = new QLabel("Green:");
-    x_green = new QLineEdit("255");
+    x_green = new MyLineEdit("0");
     x_green->setValidator(x_validator);
     x_text_b = new QLabel("Blue:");
-    x_blue = new QLineEdit("255");
+    x_blue = new MyLineEdit("0");
     x_blue->setValidator(x_validator);
     x_layout = new QHBoxLayout(this);
 
@@ -154,10 +154,9 @@ ColorHex::ColorHex(QWidget * parent)
     x_layout->setSpacing(7);
     x_layout->setMargin(0);
 
-    connect(x_red, &QLineEdit::textChanged, this, &ColorHex::setRgb2Hex);
-    connect(x_green, &QLineEdit::textChanged, this, &ColorHex::setRgb2Hex);
-    connect(x_blue, &QLineEdit::textChanged, this, &ColorHex::setRgb2Hex);
-
+    connect(x_red, &MyLineEdit::sendEnterSignal, this, &ColorHex::setRgb2Hex);
+    connect(x_green, &MyLineEdit::sendEnterSignal, this, &ColorHex::setRgb2Hex);
+    connect(x_blue, &MyLineEdit::sendEnterSignal, this, &ColorHex::setRgb2Hex);
     connect(x_hex, &MyLineEdit::sendEnterSignal, this, [this]{
         lock = true;
         // hex to rgb

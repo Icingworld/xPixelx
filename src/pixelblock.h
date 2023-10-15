@@ -11,14 +11,18 @@ public:
     PixelBlock(QColor &, int &, int &, QWidget * parent = nullptr);
     virtual ~PixelBlock();
 
+    QRgb color() { return curColor.rgb(); };
+
 private:
-    QColor & curColor;
+    QColor & globalColor;
+    QColor curColor;
     int & graphicsview_mode;
     int & working_mode;
     
     void draw() {
         setFrameShape(QFrame::NoFrame);
-        setStyleSheet(QString("background:rgb(%1,%2,%3);").arg(curColor.red()).arg(curColor.green()).arg(curColor.blue()));
+        setStyleSheet(QString("background:rgb(%1,%2,%3);").arg(globalColor.red()).arg(globalColor.green()).arg(globalColor.blue()));
+        curColor = globalColor;
     }
 
     void clear() {

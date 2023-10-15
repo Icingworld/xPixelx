@@ -60,7 +60,7 @@ class MyLineEdit : public QLineEdit
     Q_OBJECT
 
 public:
-    MyLineEdit(QWidget * parent = nullptr) : QLineEdit(parent) {}
+    MyLineEdit(QString text, QWidget * parent = nullptr) : QLineEdit(parent) { setText(text); }
 
 signals:
     void sendEnterSignal();
@@ -91,11 +91,11 @@ private:
     QLabel * x_text_hex;
     MyLineEdit * x_hex;
     QLabel * x_text_r;
-    QLineEdit * x_red;
+    MyLineEdit * x_red;
     QLabel * x_text_g;
-    QLineEdit * x_green;
+    MyLineEdit * x_green;
     QLabel * x_text_b;
-    QLineEdit * x_blue;
+    MyLineEdit * x_blue;
     QHBoxLayout * x_layout;
     QIntValidator * x_validator;
     bool lock;
