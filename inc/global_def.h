@@ -22,6 +22,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsWidget>
+#include <QImage>
 
 /* custom directory */
 #define     OUT_DIR         "out"
@@ -30,8 +31,9 @@
 #define     TEST_DIR        "test"
 
 /* customs param */
-#define     IMG_WIDHT   120
-#define     IMG_HEIGHT  90
+#define     IMG_WIDHT       120
+#define     IMG_HEIGHT      90
+#define     PIXEL_SIZE      40
 
 /* custom struct */
 enum _WorkingMode_ {
