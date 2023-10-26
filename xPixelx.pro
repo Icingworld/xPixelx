@@ -9,24 +9,32 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/launch.cpp \
+    src/output.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/colorselector.cpp \
-    src/imageblock.cpp \
     src/pixelblock.cpp \
     src/mygraphicsview.cpp \
-    src/canvas.cpp
+    src/canvas.cpp \
+    src/file.cpp \
+    src/favoratecolor.cpp
 
 HEADERS += \
     inc/global_def.h \
+    src/launch.h \
+    src/output.h \
     src/mainwindow.h \
     src/colorselector.h \
-    src/imageblock.h \
     src/pixelblock.h \
     src/mygraphicsview.h \
-    src/canvas.h
+    src/canvas.h \
+    src/file.h \
+    src/favoratecolor.h
 
 FORMS += \
+    ui/launch.ui \
+    ui/output.ui \
     ui/mainwindow.ui
 
 TRANSLATIONS += \
@@ -41,3 +49,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    logo.rc
+
+RC_FILE += \
+    logo.rc
