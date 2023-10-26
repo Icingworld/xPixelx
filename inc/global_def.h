@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QDir>
 #include <QString>
+#include <QStringList>
 #include <QVector>
 #include <QColor>
 #include <QPushButton>
@@ -23,6 +24,17 @@
 #include <QGraphicsScene>
 #include <QGraphicsWidget>
 #include <QImage>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QMenu>
+#include <QAction>
+#include <QFileDialog>
+#include <QFile>
+#include <QIcon>
+#include <QDialog>
+#include <QStandardItemModel>
+#include <QStandardItem>
 
 /* custom directory */
 #define     OUT_DIR         "out"
@@ -31,14 +43,22 @@
 #define     TEST_DIR        "test"
 
 /* customs param */
-#define     IMG_WIDHT       120
-#define     IMG_HEIGHT      90
-#define     PIXEL_SIZE      40
+#define     IMG_WIDHT               120
+#define     IMG_HEIGHT              90
+#define     PIXEL_SIZE              40
+#define     PIXEL_SHOTCUT_SIZE      5
+#define     FAVORATECOLOR_SIZE      25
+#define     FAVORATECOLOR_MAX       15
 
 /* custom struct */
 enum _WorkingMode_ {
     Draw,
     Clear
+};
+
+enum _LaunchMode_ {
+    NewProject,
+    HistoryProject
 };
 
 #endif // GLOBAL_H
