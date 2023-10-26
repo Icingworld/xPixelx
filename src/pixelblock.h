@@ -12,23 +12,36 @@ public:
     virtual ~PixelBlock();
 
     QRgb color() { return curColor.rgb(); };
+    QColor currentColor() { return curColor; };
+    void setCurColor(QColor color) { curColor = color; };
+
+    void load() {
+        curColor = globalColor;
+        if (curColor == QColor(209, 209, 209))
+        {
+            clear();
+        } else {
+            draw();
+        }
+    }
+
+    void draw() {
+        curColor = globalColor;
+        setFrameShape(QFrame::NoFrame);
+        setStyleSheet(QString("background:rgb(%1,%2,%3);").arg(curColor.red()).arg(curColor.green()).arg(curColor.blue()));
+    }
+
+    void clear() {
+        curColor = QColor(209, 209, 209);
+        setFrameShape(QFrame::Box);
+        setStyleSheet("background-color:rgb(209,209,209);border-width:1px;border-style:solid;border-color:rgb(255, 255, 255);");
+    }
 
 private:
     QColor & globalColor;
     QColor curColor;
     int & graphicsview_mode;
     int & working_mode;
-    
-    void draw() {
-        setFrameShape(QFrame::NoFrame);
-        setStyleSheet(QString("background:rgb(%1,%2,%3);").arg(globalColor.red()).arg(globalColor.green()).arg(globalColor.blue()));
-        curColor = globalColor;
-    }
-
-    void clear() {
-        setFrameShape(QFrame::Box);
-        setStyleSheet("background-color:rgb(209,209,209);border-width:1px;border-style:solid;border-color:rgb(255, 255, 255);");
-    }
 
 protected:
     void mousePressEvent(QMouseEvent * event) override {

@@ -11,8 +11,10 @@ public:
     Canvas(int, int, QColor &, int &, int &, QWidget * parent = nullptr);
     virtual ~Canvas();
 
-    void saveImage(QString, double = 1.0);
-    void loadImage(QString);
+    void outputImage(QString, double = 1.0);
+    QImage shotcutImage();
+    void loadImage(QVector <QColor>);
+    void reSize(int, int);
 
 private:
     int x_width;

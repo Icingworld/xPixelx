@@ -126,6 +126,8 @@ public:
     ColorSelector(QWidget * parent = nullptr);
     virtual ~ColorSelector();
 
+    QColor color() const { return curColor; };
+
 private:
     ColorCanvas * x_canvas;
     ColorHue * x_hue;
@@ -137,7 +139,7 @@ private:
 
 signals:
     void colorChanged(QColor);
-    void clicked();
+    void clicked(QColor);
 };
 
 #endif // COLORSELECTOR_H

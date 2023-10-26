@@ -237,6 +237,7 @@ QString ColorHex::hex2demical(QString str)
 
 ColorSelector::ColorSelector(QWidget * parent)
     : QWidget(parent)
+    , curColor(QColor(0, 0, 0))
 {
     x_canvas = new ColorCanvas();
     x_hue = new ColorHue();
@@ -263,11 +264,12 @@ ColorSelector::ColorSelector(QWidget * parent)
     connect(x_hex, &ColorHex::sendColorSignal, x_canvas, &ColorCanvas::setCyclePos);
     // hex to selector
     connect(x_hex, &ColorHex::colorChanged, this, [this](QColor color) {
+        curColor = color;
         emit colorChanged(color);
     });
     // button clicked
     connect(x_button, &QPushButton::clicked, this, [this]{
-        emit clicked();
+        emit clicked(curColor);
     });
 }
 
