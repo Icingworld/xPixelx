@@ -14,5 +14,6 @@
         <file>assets/icon/Stop_32x32.png</file>
         <file>assets/icon/ZoomIn_32x32.png</file>
         <file>assets/icon/ZoomOut_32x32.png</file>
+        <file>assets/icon/logo.png</file>
     </qresource>
 </RCC>
